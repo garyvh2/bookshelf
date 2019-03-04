@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-subtitle>Enter your username</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Username" [(ngModel)]="userLogin.username" name="username" required>
+      </mat-form-field>
+    </form>
+    <h4>{{errorLogin.message}}</h4>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="login()">Login</button>
+  </mat-card-actions>
+</mat-card>
+
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-subtitle>Set a username and pick some preferences</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Username" [(ngModel)]="userRegister.username" name="username" required [disabled]="saving?saving:undefined">
+      </mat-form-field>
+      <app-tags-chip-list [(ngModel)]="userRegister.preferences" name="preferences" [disabled]="saving?saving:undefined"></app-tags-chip-list>
+    </form>
+    <h4>{{(saved ? "User Saved Successfully" : "")}}</h4>
+    <h4>{{errorRegister.message}}</h4>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="save()" [disabled]="saving?saving:undefined">Save</button>
+  </mat-card-actions>
+</mat-card>
