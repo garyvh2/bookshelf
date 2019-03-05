@@ -1,0 +1,61 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="topbar">
+    <span>Bookshelf</span>
+    <div class="author">
+      <img mat-card-avatar src="http://picsum.photos/50/50?random&image={{user.id}}">
+      <h3>{{user.username}}</h3>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="actions">
+    <div class="left">
+      <a mat-raised-button [routerLink]="['/list/']">
+        Home
+      </a>
+    </div>
+    <div class="right">
+      <a mat-raised-button [routerLink]="['/postAdd/']">
+        <mat-icon class="example-icon">add</mat-icon>New Post
+      </a>
+      <button mat-raised-button (click)="logout()">
+        <mat-icon class="example-icon">logout</mat-icon>Log out
+      </button>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<section *ngIf="post">
+  <div class="header">
+    <h2>{{post.title}}</h2>
+    <div class="author">
+      <img mat-card-avatar src="http://picsum.photos/50/50?random&image={{post.id}}">
+      <h3>Author: <strong>{{post.author.username}}</strong></h3>
+    </div>
+    <h5>Created on <strong>{{post.timestamp | date:'medium'}}</strong></h5>
+  </div>
+  <div class="image">
+    <img src="https://picsum.photos/1080/500/?random" alt="">
+  </div>
+  <div class="content" [innerHTML]="post.text">
+  </div>
+  <div class="tags">
+    <h4>Tags:</h4>
+    <mat-chip-list>
+      <mat-chip *ngFor="let tag of post.tags">{{tag.name}}</mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <button mat-fab inactive (click)="like()" *ngIf="!liked">
+    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+    <span>{{post.likes.length}}</span>
+  </button>
+
+  <button mat-fab (click)="unlike()" *ngIf="liked">
+    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+    <span>{{post.likes.length}}</span>
+  </button>
+</section>
+<mat-divider></mat-divider>
+
+<section *ngIf="post">
+  <app-comments-box [post]="post"></app-comments-box>
+</section>

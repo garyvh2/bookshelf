@@ -19,6 +19,8 @@ public class User {
     private String status;
     /* Relations */
     @OneToMany(mappedBy = "author")
+    private Set<Comment> comments;
+    @OneToMany(mappedBy = "author")
     private Set<Post> posts;
     @ManyToMany
     @JoinTable(
@@ -70,6 +72,15 @@ public class User {
 
     public void setPosts(Set<Post> posts) {
         this.posts = posts;
+    }
+
+    @JsonIgnore
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 
     @JsonIgnore

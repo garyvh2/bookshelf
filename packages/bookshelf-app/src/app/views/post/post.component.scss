@@ -1,0 +1,105 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  mat-toolbar-row .actions a {
+    margin: auto 5px;
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+
+    .author {
+      display: flex;
+      align-items: center;
+
+      h3 {
+        margin-left: 20px;
+      }
+    }
+
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      &>* {
+        margin: auto 5px;
+      }
+    }
+
+    .right {
+      &>* {
+        margin: auto 5px;
+      }
+    }
+  }
+
+  section {
+    width: 100%;
+
+    .header {
+      width: 80%;
+      margin: 20px auto;
+      position: relative;
+
+      h2 {
+        font-size: 35px;
+      }
+
+      h5 {
+        margin: 0;
+      }
+
+      .author {
+        display: flex;
+        align-items: center;
+
+        h3 {
+          margin-left: 20px;
+        }
+      }
+    }
+
+    .image {
+      width: 100%;
+      position: relative;
+
+      img {
+        width: 100%;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    .tags,
+    .content {
+      width: 70%;
+      margin: 40px auto;
+      position: relative;
+    }
+
+    button[mat-fab] {
+      position: fixed;
+      top: 25%;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+
+      &[inactive] {
+        color: #000;
+        background: #fff;
+        border-color: #333;
+      }
+    }
+
+    app-comments-box {
+      width: 70%;
+      margin: 20px auto;
+    }
+  }
+
+}

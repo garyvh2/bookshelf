@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="topbar">
+    <span>Bookshelf</span>
+    <div class="author">
+      <img mat-card-avatar src="http://picsum.photos/50/50?random&image={{user.id}}">
+      <h3>{{user.username}}</h3>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="actions">
+    <div class="left">
+      <a mat-raised-button [routerLink]="['/list/']">
+        Home
+      </a>
+    </div>
+    <div class="right">
+      <button mat-raised-button (click)="logout()">
+        <mat-icon class="example-icon">logout</mat-icon>Log out
+      </button>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Create a post</mat-card-title>
+    <mat-card-subtitle>Complete the following information</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <h4>{{error && error.message || message || ''}}</h4>
+    <form>
+      <mat-form-field appearance="outline">
+        <input [(ngModel)]="post.title" matInput placeholder="Title" name="title" required>
+      </mat-form-field>
+      <app-tags-chip-list [(ngModel)]="post.tags" name="tags" placeholder="Tags"></app-tags-chip-list>
+      <ckeditor [(ngModel)]="post.text" [editor]="Editor" name="text"></ckeditor>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button mat-raised-button (click)="savePost()">Save</button>
+  </mat-card-actions>
+</mat-card>

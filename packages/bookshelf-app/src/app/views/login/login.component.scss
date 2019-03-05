@@ -1,26 +1,38 @@
 :host {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
 
-  mat-card {
-    flex: 1;
-    margin: 20px;
+  .title {
+    text-align: center;
+    font-size: 70px;
+    margin: 30px;
+    font-family: 'timeburnerbold';
+  }
 
-    mat-card-content form {
-      display: flex;
-      flex-direction: column;
+  .cards {
+    display: flex;
+    flex-direction: row;
 
-      app-tags-chip-list,
-      mat-form-field {
-        flex: 1;
+    mat-card {
+      flex: 1;
+      margin: 20px;
+
+      mat-card-content form {
+        display: flex;
+        flex-direction: column;
+
+        app-tags-chip-list,
+        mat-form-field {
+          flex: 1;
+        }
       }
-    }
 
-    mat-card-actions {
-      display: flex;
-      justify-content: flex-end;
+      mat-card-actions {
+        display: flex;
+        justify-content: flex-end;
+      }
     }
   }
 

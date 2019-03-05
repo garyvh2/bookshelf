@@ -1,3 +1,41 @@
-<p>
-  list works!
-</p>
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="topbar">
+    <span>Bookshelf</span>
+    <div class="author">
+      <img mat-card-avatar src="http://picsum.photos/50/50?random&image={{user.id}}">
+      <h3>{{user.username}}</h3>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="actions">
+    <div class="left">
+      <button mat-raised-button color="accent" (click)="loadPosts()">
+        All Posts
+      </button>
+      <button mat-raised-button color="accent" (click)="loadMyPosts()">
+        My Posts
+      </button>
+      <button mat-raised-button color="accent" (click)="loadSuggested()">
+        Suggested Posts
+      </button>
+      <button mat-raised-button color="accent" (click)="loadLiked()">
+        Posts I Liked
+      </button>
+    </div>
+    <div class="right">
+      <a mat-raised-button [routerLink]="['/postAdd/']">
+        <mat-icon class="example-icon">add</mat-icon>New Post
+      </a>
+      <button mat-raised-button (click)="logout()">
+        <mat-icon class="example-icon">logout</mat-icon>Log out
+      </button>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="posts" *ngIf="posts.length > 0">
+  <app-post-detail *ngFor="let post of posts" [post]="post" [routerLink]="['/post/', post.id]"></app-post-detail>
+</div>
+
+<div class="noposts" *ngIf="posts.length === 0">
+  <h4>No Posts Found.</h4>
+</div>

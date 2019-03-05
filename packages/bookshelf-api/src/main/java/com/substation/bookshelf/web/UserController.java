@@ -1,5 +1,6 @@
 package com.substation.bookshelf.web;
 
+import com.substation.bookshelf.domain.Post;
 import com.substation.bookshelf.domain.Tag;
 import com.substation.bookshelf.domain.User;
 import com.substation.bookshelf.service.UserService;
@@ -39,12 +40,32 @@ public class UserController {
     @GetMapping("/{id}/preferences")
     public Set<Tag> getPreferences(@PathVariable Long id) { return this.userService.getPreferences(id); }
 
-    @PutMapping("/{userId}/like/{postId}")
+    @GetMapping("/{userId}/like/{postId}")
     public User likePost(@PathVariable Long userId, @PathVariable Long postId) { return this.userService.likePost(userId,postId); }
 
-    @PutMapping("/{userId}/unlike/{postId}")
+    @GetMapping("/{userId}/unlike/{postId}")
     public User unlikePost(@PathVariable Long userId, @PathVariable Long postId) { return this.userService.unlikePost(userId,postId); }
 
     @PostMapping("/login")
     public User login(@RequestBody User user) { return this.userService.login(user); }
+
+    @GetMapping("/{id}/posts")
+    public Set<Post> getMyPosts(@PathVariable Long id) {
+        return this.userService.getMyPosts(id);
+    }
+
+    @GetMapping("/{id}/liked")
+    public Set<Post> getLiked(@PathVariable Long id) {
+        return this.userService.getLiked(id);
+    }
+
+    @GetMapping("/{id}/suggested")
+    public Set<Post> getSuggested(@PathVariable Long id) {
+        return this.userService.getSuggested(id);
+    }
+
+    @GetMapping("/{id}/allposts")
+    public Set<Post> getAllPosts(@PathVariable Long id) {
+        return this.userService.getAllPosts(id);
+    }
 }

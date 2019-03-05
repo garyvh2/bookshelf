@@ -4,12 +4,18 @@
   font-family: 'Muli', sans-serif;
 }
 
+@font-face {
+  font-family: timeburnerbold;
+  src: url(assets/font/timeburnerbold.ttf) format("truetype");
+}
+
+
 html,
 body {
   height: 100%;
 }
 
 body {
-  background: #313131;
+  // background: #313131;
   margin: 0;
 }

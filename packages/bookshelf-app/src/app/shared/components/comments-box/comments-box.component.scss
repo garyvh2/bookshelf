@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  app-comments-box-detail {
+    flex: 1;
+    margin: 10px;
+  }
+}

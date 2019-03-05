@@ -1,11 +1,13 @@
 package com.substation.bookshelf.web;
 
 
+import com.substation.bookshelf.domain.Comment;
 import com.substation.bookshelf.domain.Post;
 import com.substation.bookshelf.service.PostService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/post")
@@ -24,6 +26,11 @@ public class PostController {
     @GetMapping("/{id}")
     public Post findBydId(@PathVariable Long id) {
         return this.postService.findById(id);
+    }
+
+    @GetMapping("/{id}/comments")
+    public Set<Comment> getComments(@PathVariable Long id){
+        return this.postService.getComments(id);
     }
 
     @PostMapping()

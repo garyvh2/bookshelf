@@ -1,11 +1,11 @@
-<mat-form-field>
+<mat-form-field appearance="outline">
   <mat-chip-list #chipList>
 
     <mat-chip *ngFor="let tag of selectedTags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)">
       {{tag.name}}
       <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
     </mat-chip>
-    <input placeholder="Preferences" #tagInput [formControl]="tagCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+    <input placeholder="{{placeholder}}" #tagInput [formControl]="tagCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)"
       [disabled]="disabled?disabled:undefined">
   </mat-chip-list>

@@ -40,6 +40,8 @@ export class TagsChipListComponent implements OnInit {
   // Attributes
   @Input()
   disabled: Boolean;
+  @Input()
+  placeholder: String;
   visible = true;
   selectable = true;
   removable = true;

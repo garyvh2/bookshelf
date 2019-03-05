@@ -11,7 +11,10 @@ import {
   MatInputModule,
   MatChipsModule,
   MatIconModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatDividerModule,
+  MatToolbarModule,
+  MatTabsModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,20 +23,39 @@ import { LoginComponent } from './views/login/login.component';
 import { ListComponent } from './views/list/list.component';
 import { AuthGuardService } from './services/authguard.service';
 import { AuthService } from './services/auth.service';
+import { PostAddComponent } from './views/post-add/post-add.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { PostDetailComponent } from './shared/components/post-detail/post-detail.component';
+import { PostComponent } from './views/post/post.component';
+import { CommentsBoxComponent } from './shared/components/comments-box/comments-box.component';
+import { CommentsBoxAddComponent } from './shared/components/comments-box-add/comments-box-add.component';
+import { CommentsBoxDetailComponent } from './shared/components/comments-box-detail/comments-box-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     TagsChipListComponent,
     LoginComponent,
-    ListComponent
+    ListComponent,
+    PostAddComponent,
+    PostDetailComponent,
+    PostComponent,
+    CommentsBoxComponent,
+    CommentsBoxAddComponent,
+    CommentsBoxDetailComponent
   ],
   imports: [
     HttpClientModule,
     MatButtonModule,
+    MatTabsModule,
     MatCardModule,
+    MatIconModule,
+    MatToolbarModule,
     MatInputModule,
+    MatDividerModule,
     MatChipsModule,
     MatIconModule,
+    CKEditorModule,
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,

@@ -1,5 +1,6 @@
 package com.substation.bookshelf.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -20,6 +21,10 @@ public class Comment {
     @ManyToOne(optional = false)
     @JoinColumn
     private User author;
+    @ManyToOne(optional = false)
+    @JoinColumn
+    private Post post;
+
     /* Getters & Setters */
     public Long getId() {
         return id;
@@ -43,6 +48,14 @@ public class Comment {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public User getAuthor() {

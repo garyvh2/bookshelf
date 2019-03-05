@@ -1,5 +1,6 @@
 package com.substation.bookshelf.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -15,13 +16,15 @@ public class Post {
     private Long id;
     @Column(nullable = false)
     private String title;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition="text")
     private String text;
     @Column(nullable = false)
     private String status;
     @Column(nullable = false)
     private Timestamp timestamp;
     /* Relations */
+    @OneToMany(mappedBy = "post")
+    private Set<Comment> comments;
     @ManyToOne(optional = false)
     @JoinColumn
     private User author;
@@ -32,8 +35,6 @@ public class Post {
             inverseJoinColumns = { @JoinColumn(name = "tag_id") }
     )
     private Set<Tag> tags;
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-    private Set<Comment> comments;
     @ManyToMany(mappedBy = "likes")
     private Set<User> likes;
     /*Getters & Setters */
@@ -85,6 +86,7 @@ public class Post {
         this.author = author;
     }
 
+    @JsonIgnore
     public Set<Comment> getComments() {
         return comments;
     }

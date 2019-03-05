@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Add a comment</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h4>{{error && error.message || message || ''}}</h4>
+    <form>
+      <ckeditor #ckeditor [(ngModel)]="comment.comment" [editor]="Editor" name="text"></ckeditor>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="saveComment()">Save</button>
+  </mat-card-actions>
+</mat-card>

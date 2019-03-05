@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -77,5 +78,23 @@ public class UserService {
     @Transactional(readOnly = true)
     public User login(User user) {
         return this.userRepository.findByUsername(user.getUsername()).get();
+    }
+
+    @Transactional(readOnly = true)
+    public Set<Post> getMyPosts(Long id) {
+        return this.userRepository.findById(id).get().getPosts();
+    }
+
+    @Transactional(readOnly = true)
+    public Set<Post> getLiked(Long id) {
+        return this.userRepository.findById(id).get().getLikes();
+    }
+
+    @Transactional(readOnly = true)
+    public Set<Post> getSuggested(Long id) {
+        List<Post> posts = this.postRepository.findAll();
+        Set<Tag> preferences = this.userRepository.findById(id).get().getPreferences();
+
+        return posts.stream().filter(post -> post.getTags().stream().anyMatch(tag -> preferences.contains(tag))).collect(Collectors.toSet());
     }
 }
