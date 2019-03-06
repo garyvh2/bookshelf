@@ -13,7 +13,7 @@ public class Comment {
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition="longtext")
     private String comment;
     @Column(nullable = false)
     private Timestamp timestamp;

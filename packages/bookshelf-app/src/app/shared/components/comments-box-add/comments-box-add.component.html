@@ -5,7 +5,7 @@
   <mat-card-content>
     <h4>{{error && error.message || message || ''}}</h4>
     <form>
-      <ckeditor #ckeditor [(ngModel)]="comment.comment" [editor]="Editor" name="text"></ckeditor>
+      <ckeditor #ckeditor [(ngModel)]="comment.comment" [editor]="Editor" [config]="EditorConfig" name="text"></ckeditor>
     </form>
   </mat-card-content>
   <mat-card-actions>

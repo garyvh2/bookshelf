@@ -12,7 +12,7 @@ import { getUser } from '../../shared/utils/getUser';
 })
 export class ListComponent implements OnInit {
   user: User = getUser();
-  posts: Post[];
+  posts: Post[] = [];
 
   constructor(private postService: PostService, private router: Router) {}
 
@@ -21,20 +21,8 @@ export class ListComponent implements OnInit {
   }
 
   loadPosts() {
-    this.postService.getPosts().subscribe(posts => {
-      this.posts = posts.sort((current, next) => {
-        const currentDate = new Date(current.timestamp);
-        const nextDate = new Date(next.timestamp);
-        if (currentDate > nextDate) {
-          return -1;
-        }
-        if (currentDate < nextDate) {
-          return 1;
-        }
-        if (currentDate === nextDate) {
-          return 0;
-        }
-      });
+    this.postService.getPosts(getUser()).subscribe(posts => {
+      this.posts = posts;
     });
   }
 

@@ -3,8 +3,19 @@
     <img mat-card-avatar src="http://picsum.photos/50/50?random&image={{comment.id}}">
     <mat-card-title>{{comment.author.username}}</mat-card-title>
     <mat-card-subtitle>Created on {{comment.timestamp | date:'medium'}}</mat-card-subtitle>
+    <button mat-button (click)="edit()" *ngIf="user.username === comment.author.username">Edit</button>
   </mat-card-header>
   <mat-card-content>
-    <div [innerHTML]="comment.comment"></div>
+    <h4>{{error && error.message || message || ''}}</h4>
+    <div [innerHTML]="comment.comment" *ngIf="!editMode"></div>
+    <div class="edit" *ngIf="editMode">
+      <form>
+        <ckeditor #ckeditor [(ngModel)]="comment.comment" [editor]="Editor" [config]="EditorConfig" name="text"></ckeditor>
+      </form>
+    </div>
   </mat-card-content>
+
+  <mat-card-actions *ngIf="editMode">
+    <button mat-button (click)="updateComment()">Save</button>
+  </mat-card-actions>
 </mat-card>

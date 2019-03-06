@@ -19,3 +19,71 @@ body {
   // background: #313131;
   margin: 0;
 }
+
+
+.ckeditorOut {
+  blockquote {
+    /* See #12 */
+    overflow: hidden;
+
+    /* https://github.com/ckeditor/ckeditor5-block-quote/issues/15 */
+    padding-right: 1.5em;
+
+    padding-left: 1.5em;
+    margin-left: 0;
+    font-style: italic;
+    border-left: solid 5px hsl(0, 0%, 80%);
+  }
+
+
+  code {
+    background-color: hsla(0, 0%, 78%, 0.3);
+    padding: .15em;
+    border-radius: 2px;
+  }
+
+  .table {
+    /* Give the table widget some air and center it horizontally */
+    margin: 1em auto;
+    display: table;
+
+    & table {
+      /* The table cells should have slight borders */
+      border-collapse: collapse;
+      border-spacing: 0;
+
+      /* The outer border of the table should be slightly darker than the inner lines.
+      Also see https://github.com/ckeditor/ckeditor5-table/issues/50. */
+      border: 1px double hsl(0, 0%, 70%);
+
+      & td,
+      & th {
+        min-width: 2em;
+        padding: .4em;
+        border-color: hsl(0, 0%, 85%);
+      }
+
+      & th {
+        font-weight: bold;
+        background: hsl(0, 0%, 98%);
+      }
+    }
+  }
+
+  .media {
+    /* Don't allow floated content overlap the media.
+    https://github.com/ckeditor/ckeditor5-media-embed/issues/53 */
+    clear: both;
+
+    /* Make sure there is some space between the content and the media. */
+    margin: 1em 0;
+
+    /* Make sure media is not overriden with Bootstrap default `flex` value.
+    See: https://github.com/ckeditor/ckeditor5/issues/1373. */
+    display: block;
+
+    /* Give the media some minimal width in the content to prevent them
+    from being "squashed" in tight spaces, e.g. in table cells (#44) */
+    min-width: 15em;
+  }
+}

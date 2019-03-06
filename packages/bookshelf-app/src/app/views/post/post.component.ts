@@ -50,4 +50,13 @@ export class PostComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['login']);
   }
+
+  isPrefered(tag) {
+    return this.user.preferences.some(pref => pref.name === tag.name);
+  }
+
+  getColor(tag) {
+    const isPrefered = this.isPrefered(tag);
+    return isPrefered ? 'primary' : 'accent';
+  }
 }

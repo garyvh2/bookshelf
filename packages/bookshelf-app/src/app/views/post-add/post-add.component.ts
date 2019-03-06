@@ -6,6 +6,7 @@ import { AppError } from '../../models/Error';
 import { User } from '../../models/User';
 import { Router } from '@angular/router';
 import { getUser } from '../../shared/utils/getUser';
+import { editorConfig } from '../../app.settings';
 
 @Component({
   selector: 'app-post-add',
@@ -14,6 +15,7 @@ import { getUser } from '../../shared/utils/getUser';
 })
 export class PostAddComponent implements OnInit {
   public Editor = ClassicEditor;
+  EditorConfig = editorConfig;
   post: Post = new Post();
   message = '';
   error: AppError = new AppError();

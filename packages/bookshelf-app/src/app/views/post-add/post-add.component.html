@@ -32,7 +32,7 @@
         <input [(ngModel)]="post.title" matInput placeholder="Title" name="title" required>
       </mat-form-field>
       <app-tags-chip-list [(ngModel)]="post.tags" name="tags" placeholder="Tags"></app-tags-chip-list>
-      <ckeditor [(ngModel)]="post.text" [editor]="Editor" name="text"></ckeditor>
+      <ckeditor [(ngModel)]="post.text" [editor]="Editor" [config]="EditorConfig" name="text"></ckeditor>
     </form>
   </mat-card-content>
   <mat-card-actions>

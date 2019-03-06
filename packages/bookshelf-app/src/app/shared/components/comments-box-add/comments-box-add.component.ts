@@ -5,6 +5,7 @@ import { CommentService } from '../../../services/comment.service';
 import { getUser } from '../../utils/getUser';
 import { Post } from 'src/app/models/Post';
 import { AppError } from '../../../models/Error';
+import { editorConfig } from '../../../app.settings';
 
 @Component({
   selector: 'app-comments-box-add',
@@ -14,8 +15,9 @@ import { AppError } from '../../../models/Error';
 export class CommentsBoxAddComponent implements OnInit {
   @Input()
   post: Post;
-  public Editor = ClassicEditor;
   comment: Comment = new Comment();
+  public Editor = ClassicEditor;
+  EditorConfig = editorConfig;
   message = '';
   error: AppError = new AppError();
 

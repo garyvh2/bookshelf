@@ -65,7 +65,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/allposts")
-    public Set<Post> getAllPosts(@PathVariable Long id) {
+    public List<Post> getAllPosts(@PathVariable Long id) {
         return this.userService.getAllPosts(id);
     }
 }

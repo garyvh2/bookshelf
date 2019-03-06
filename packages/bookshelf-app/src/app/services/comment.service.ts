@@ -22,6 +22,17 @@ export class CommentService {
     return addComment.asObservable();
   }
 
+  updateComment(comment): Observable<Comment> {
+    const url = `${apiBase}/comment`;
+    const addComment = new Subject<Comment>();
+    this.http
+      .put<Comment>(url, comment)
+      .subscribe(
+        data => (this.getPostComments(comment.post.id), addComment.next(data))
+      );
+    return addComment.asObservable();
+  }
+
   getPostComments(postId): Observable<Comment[]> {
     const url = `${apiBase}/post/${postId}/comments`;
     this.http.get<Comment[]>(url).subscribe(data => this.subject.next(data));

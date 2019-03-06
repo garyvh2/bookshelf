@@ -16,7 +16,7 @@ public class Post {
     private Long id;
     @Column(nullable = false)
     private String title;
-    @Column(nullable = false, columnDefinition="text")
+    @Column(nullable = false, columnDefinition="longtext")
     private String text;
     @Column(nullable = false)
     private String status;

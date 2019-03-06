@@ -35,12 +35,12 @@
   <div class="image">
     <img src="https://picsum.photos/1080/500/?random" alt="">
   </div>
-  <div class="content" [innerHTML]="post.text">
+  <div class="content ckeditorOut" [innerHTML]="post.text">
   </div>
   <div class="tags">
     <h4>Tags:</h4>
     <mat-chip-list>
-      <mat-chip *ngFor="let tag of post.tags">{{tag.name}}</mat-chip>
+      <mat-chip *ngFor="let tag of post.tags" [color]="getColor(tag)" [selected]="isPrefered(tag)">{{tag.name}}</mat-chip>
     </mat-chip-list>
   </div>
 

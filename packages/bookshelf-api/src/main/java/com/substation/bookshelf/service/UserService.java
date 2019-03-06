@@ -9,6 +9,8 @@ import com.substation.bookshelf.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -96,5 +98,20 @@ public class UserService {
         Set<Tag> preferences = this.userRepository.findById(id).get().getPreferences();
 
         return posts.stream().filter(post -> post.getTags().stream().anyMatch(tag -> preferences.contains(tag))).collect(Collectors.toSet());
+    }
+
+    @Transactional(readOnly = true)
+    public List<Post> getAllPosts(Long id) {
+        List<Post> posts = this.postRepository.findAll();
+        Set<Tag> preferences = this.userRepository.findById(id).get().getPreferences();
+
+        List<Post> suggested = posts.stream().filter(post -> post.getTags().stream().anyMatch(tag -> preferences.contains(tag))).collect(Collectors.toList());
+        suggested.sort(Comparator.comparing(Post::getTimestamp));
+        Collections.reverse(suggested);
+        List<Post> otherPosts = posts.stream().filter(post -> post.getTags().stream().allMatch(tag -> !preferences.contains(tag))).collect(Collectors.toList());
+        otherPosts.sort(Comparator.comparing(Post::getTimestamp));
+        Collections.reverse(otherPosts);
+        suggested.addAll(otherPosts);
+        return suggested;
     }
 }

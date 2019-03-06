@@ -4,6 +4,7 @@ import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Post } from '../models/Post';
 import { User } from '../models/User';
+import { getUser } from '../shared/utils/getUser';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class PostService {
     return this.currentPost.asObservable();
   }
 
-  getPosts(): Observable<Post[]> {
-    const url = `${apiBase}/post`;
+  getPosts(user: User): Observable<Post[]> {
+    const url = `${apiBase}/user/${user.id}/allposts`;
     this.http.get<Post[]>(url).subscribe(data => this.subject.next(data));
     return this.subject.asObservable();
   }
@@ -49,7 +50,7 @@ export class PostService {
     this.http
       .post<Post>(url, post)
       .subscribe(
-        data => (addPost.next(data), this.getPosts()),
+        data => (addPost.next(data), this.getPosts(getUser())),
         error => addPost.error(error)
       );
     return addPost.asObservable();
