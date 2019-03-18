@@ -1,3 +1,4 @@
+import { LandingComponent } from './views/landing/landing.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './views/login/login.component';
@@ -25,6 +26,10 @@ const routes: Routes = [
     path: 'post/:id',
     component: PostComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'landing',
+    component: LandingComponent
   },
   { path: '**', redirectTo: 'login' }
 ];

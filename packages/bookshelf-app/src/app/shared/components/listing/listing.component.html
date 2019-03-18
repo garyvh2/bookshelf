@@ -1,0 +1,25 @@
+<mat-card>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-header>
+    <div class="details">
+      <mat-card-title>Casa 2 Plantas Cartago</mat-card-title>
+      <mat-card-subtitle>
+        <mat-icon svgIcon="shozas_pin"></mat-icon>
+        San Jose, San Sebastian
+      </mat-card-subtitle>
+    </div>
+    <app-detail-like></app-detail-like>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="specs">
+      <app-detail-spec src="../../../../assets/images/bed.png">2</app-detail-spec>
+      <app-detail-spec src="../../../../assets/images/bath.png">1</app-detail-spec>
+      <app-detail-spec src="../../../../assets/images/garage.png">1</app-detail-spec>
+      <app-detail-spec src="../../../../assets/images/ruler.png">200mt<sup>2</sup></app-detail-spec>
+    </div>
+    <div class="details">
+      <app-user-rating class="details__user"></app-user-rating>
+      <span class="details__price">¢15'000'000</span>
+    </div>
+  </mat-card-content>
+</mat-card>
