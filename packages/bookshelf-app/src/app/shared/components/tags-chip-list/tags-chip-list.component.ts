@@ -1,4 +1,4 @@
-import { COMMA, ENTER } from "@angular/cdk/keycodes";
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import {
   Component,
   OnInit,
@@ -6,16 +6,16 @@ import {
   ElementRef,
   forwardRef,
   Input
-} from "@angular/core";
-import { Tag } from "../../../models/Tag";
-import { TagService } from "../../../services/tag.service";
-import { FormControl, NG_VALUE_ACCESSOR } from "@angular/forms";
+} from '@angular/core';
+import { Tag } from '../../../models/Tag';
+import { TagService } from '../../../services/tag.service';
+import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
   MatAutocompleteSelectedEvent,
   MatChipInputEvent,
   MatAutocomplete
-} from "@angular/material";
-import { Observable } from "rxjs";
+} from '@angular/material';
+import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 const customValueProvider = {
@@ -23,8 +23,6 @@ const customValueProvider = {
   useExisting: forwardRef(() => TagsChipListComponent),
   multi: true
 };
-
-const noop = () => {};
 
 @Component({
   selector: 'app-tags-chip-list',
@@ -60,8 +58,7 @@ export class TagsChipListComponent implements OnInit {
   filteredTags: Observable<Tag[]>;
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
+  propagateChange: any = () => {};
 
   getAvailableTags(tag: string): Tag[] {
     if (tag) {
@@ -141,15 +138,10 @@ export class TagsChipListComponent implements OnInit {
       this.value = value;
     }
   }
-  // From ControlValueAccessor interface
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
+  registerOnChange(fn) {
+    this.propagateChange = fn;
   }
-
-  // From ControlValueAccessor interface
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
-  }
+  registerOnTouched(fn: () => void): void {}
   onChange(value) {
     this.propagateChange(value);
   }

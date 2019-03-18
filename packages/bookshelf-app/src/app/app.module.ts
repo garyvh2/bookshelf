@@ -14,9 +14,7 @@ import {
   MatAutocompleteModule,
   MatDividerModule,
   MatToolbarModule,
-  MatTabsModule,
-  MatSelectModule,
-  MatRadioModule
+  MatTabsModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,15 +30,6 @@ import { PostComponent } from './views/post/post.component';
 import { CommentsBoxComponent } from './shared/components/comments-box/comments-box.component';
 import { CommentsBoxAddComponent } from './shared/components/comments-box-add/comments-box-add.component';
 import { CommentsBoxDetailComponent } from './shared/components/comments-box-detail/comments-box-detail.component';
-import { LandingComponent } from './views/landing/landing.component';
-import { ListingComponent } from './shared/components/listing/listing.component';
-import { StarRatingModule } from 'angular-star-rating';
-import { UserRatingComponent } from './shared/components/user-rating/user-rating.component';
-import { DetailSpecComponent } from './shared/components/detail-spec/detail-spec.component';
-import { DetailLikeComponent } from './shared/components/detail-like/detail-like.component';
-import { Ng5SliderModule } from 'ng5-slider';
-import { RangeComponentComponent } from './shared/components/range-component/range-component.component';
-import { FilterAmountComponent } from './shared/components/filter-amount/filter-amount.component';
 
 @NgModule({
   declarations: [
@@ -53,23 +42,12 @@ import { FilterAmountComponent } from './shared/components/filter-amount/filter-
     PostComponent,
     CommentsBoxComponent,
     CommentsBoxAddComponent,
-    CommentsBoxDetailComponent,
-    LandingComponent,
-    ListingComponent,
-    UserRatingComponent,
-    DetailSpecComponent,
-    DetailLikeComponent,
-    RangeComponentComponent,
-    FilterAmountComponent
+    CommentsBoxDetailComponent
   ],
   imports: [
     HttpClientModule,
-    StarRatingModule.forRoot(),
     MatButtonModule,
     MatTabsModule,
-    MatSelectModule,
-    Ng5SliderModule,
-    MatRadioModule,
     MatCardModule,
     MatIconModule,
     MatToolbarModule,
